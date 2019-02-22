@@ -24,69 +24,71 @@
     <style>
 
       :host {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        opacity: 1;
-        z-index: 8000;
+        white-space: normal;
       }
 
       .info {
         background-color: #d9edf7;
         border-color: #bce8f1;
         color: #3a87ad;
-        text-shadow: 0 1px 0 rgba(255,255,255,0.5);
       }
 
       .warning {
         background-color: #fcf8e3;
         border-color: #fbeed5;
         color: #c09853;
-        text-shadow: 0 1px 0 rgba(255,255,255,0.5);
       }
 
       .exclamation {
         background-color: #f2dede;
         border-color: rgb(238, 211, 215);
         color: #ff5757;
-        text-shadow: 0 1px 0 rgba(255,255,255,0.5);
       }
 
       .notice {
-        padding: 8px 35px 8px 14px;
         border: 1px solid;
         border-radius: 4px;
         font-size: 14px;
+        display: flex;
+        flex-direction: row;
+        padding: 6px;
       }
 
       .title {
         font-weight: 700;
-        line-height: 20px;
-        flex: 1;
-        justify-content: center;
-        align-self: center;
-        text-align: center;
+        text-align: left;
       }
 
       .message {
-        margin-top: 10px;
-        margin-bottom: 5px;
+        margin-top: 6px;
+        text-align: left;
+      }
+
+      p {
+        margin: 0px;
+      }
+
+      .column {
+        display: flex;
+        flex-direction: column;
       }
 
       iron-icon {
-        width: 45px;
-        height: 45px;
+        min-width: 32px;
+        min-height: 32px;
+        margin-right: 6px;
       }
 
     </style>
 
-    <div class$="notice [[ type ]]">
-      <div class="title">
-        <iron-icon icon$="casper-icons:[[ type ]]" class="large-icon"></iron-icon>
-        <strong>[[ title ]]</strong>
+    <div class$="notice [[type]]">
+      <iron-icon icon$="casper-icons:[[type]]"></iron-icon>
+      <div class="column">
+        <p class="title">[[title]]</p>
+        <div class="message">
+          <slot></slot>
+        </div>
       </div>
-      <div class="message">[[ message ]]</div>
     </div>
   </template>
 
@@ -108,13 +110,11 @@
         return {
           title: String,
           description: String,
-          type: String,
-          message: String
+          type: {
+            type: String,
+            value: 'info'
+          }
         };
-      }
-
-      ready () {
-        super.ready();
       }
     }
 
