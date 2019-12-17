@@ -11,8 +11,8 @@
   "main": "casper-notice.js",
   "dependencies": {
     "@casper2020/casper-icons": "^1.x",
-    "@polymer/iron-icon": "^3.0.1",
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/iron-icon": "^3.x",
+    "@polymer/polymer": "^3.x"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0",
