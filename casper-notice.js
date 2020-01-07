@@ -18,11 +18,22 @@
   -
  */
 
-import '@polymer/iron-icon/iron-icon.js';
-import '@casper2020/casper-icons/casper-icons.js';
+import '@casper2020/casper-icons/casper-icon.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class CasperNotice extends PolymerElement {
+
+  static get properties () {
+    return {
+      title: String,
+      type: {
+        type: String,
+        value: 'info',
+        observer: '__typeChanged'
+      }
+    };
+  }
+
   static get template() {
     return html`
       <style>
@@ -58,7 +69,7 @@ class CasperNotice extends PolymerElement {
           padding: 6px;
         }
 
-        .title {
+        .title {
           font-weight: 700;
           text-align: left;
         }
@@ -77,16 +88,16 @@ class CasperNotice extends PolymerElement {
           flex-direction: column;
         }
 
-        iron-icon {
+        casper-icon {
           min-width: 32px;
           min-height: 32px;
-          margin-right: 6px;
+          margin-right: 10px;
         }
 
       </style>
 
       <div class$="notice [[type]]">
-        <iron-icon icon$="casper-icons:[[type]]"></iron-icon>
+        <casper-icon></casper-icon>
         <div class="column">
           <p class="title">[[title]]</p>
           <div class="message">
@@ -97,19 +108,15 @@ class CasperNotice extends PolymerElement {
     `;
   }
 
-  static get is () {
-    return 'casper-notice';
-  }
+  __typeChanged (type) {
+    const casperIconElement = this.shadowRoot.querySelector('casper-icon');
 
-  static get properties () {
-    return {
-      title: String,
-      type: {
-        type: String,
-        value: 'info'
-      }
-    };
+    switch (type) {
+      case 'info': casperIconElement.icon = 'fa-light:info-circle'; break;
+      case 'warning': casperIconElement.icon = 'fa-light:exclamation-triangle'; break;
+      case 'exclamation': casperIconElement.icon = 'fa-light:exclamation-circle'; break;
+    }
   }
 }
 
-window.customElements.define(CasperNotice.is, CasperNotice);
+window.customElements.define('casper-notice', CasperNotice);
