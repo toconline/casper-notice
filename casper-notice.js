@@ -26,6 +26,7 @@ class CasperNotice extends PolymerElement {
   static get properties () {
     return {
       title: String,
+      message: String,
       type: {
         type: String,
         value: 'info',
@@ -77,6 +78,7 @@ class CasperNotice extends PolymerElement {
         .message {
           margin-top: 6px;
           text-align: left;
+          font-weight: normal;
         }
 
         p {
@@ -101,7 +103,9 @@ class CasperNotice extends PolymerElement {
         <div class="column">
           <p class="title">[[title]]</p>
           <div class="message">
-            <slot></slot>
+            <slot>
+              <div class="message">[[message]]</div>
+            </slot>
           </div>
         </div>
       </div>
