@@ -1,7 +1,7 @@
 {
   "description": "Notice template for instructions inside forms",
   "name": "@cloudware-casper/casper-notice",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -13,7 +13,7 @@
   },
   "main": "casper-notice.js",
   "dependencies": {
-    "@casper2020/casper-icons": "^1.x",
+    "@cloudware-casper/casper-icons": "^1.x",
     "@polymer/polymer": "^3.x"
   },
   "devDependencies": {
