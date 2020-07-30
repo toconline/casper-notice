@@ -101,7 +101,7 @@ class CasperNotice extends PolymerElement {
 
         .main-container .icon-container {
           display: flex;
-          padding: 10px;
+          padding: 8px;
           align-items: center;
           border-right-width: 2px;
           border-right-style: solid;
@@ -114,8 +114,8 @@ class CasperNotice extends PolymerElement {
 
         .main-container .content-container {
           display: flex;
-          padding: 20px;
-          padding-left: 10px;
+          padding: 16px;
+          padding-left: 8px;
           flex-direction: column;
         }
 
@@ -136,7 +136,11 @@ class CasperNotice extends PolymerElement {
           <casper-icon icon="[[__getIcon(type)]]"></casper-icon>
         </div>
         <div class="content-container">
-          <span class="title">[[__getTitle(title)]]</span>
+          <!--Title-->
+          <template is="dom-if" if="[[title]]">
+            <span class="title">[[title]]</span>
+          </template>
+          <!--Content-->
           <div class="content">
             <slot>[[message]]</slot>
           </div>
@@ -154,20 +158,6 @@ class CasperNotice extends PolymerElement {
       case 'success': return 'fa-light:check-circle';
       case 'warning': return 'fa-light:exclamation-triangle';
       case 'exclamation': return 'fa-light:exclamation-circle';
-    }
-  }
-
-  /**
-   * This method will return the component's title.
-   */
-  __getTitle () {
-    if (this.title) return this.title;
-
-    switch (this.type) {
-      case 'warning': return 'Aviso';
-      case 'info': return 'Informação';
-      case 'success': return 'Sucesso';
-      case 'exclamation': return 'Erro';
     }
   }
 }
