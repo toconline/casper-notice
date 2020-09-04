@@ -115,6 +115,7 @@ class CasperNotice extends PolymerElement {
         .main-container .content-container {
           display: flex;
           padding: 8px;
+          flex-grow: 1;
           flex-direction: column;
         }
 
