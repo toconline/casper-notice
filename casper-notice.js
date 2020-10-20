@@ -43,6 +43,10 @@ class CasperNotice extends PolymerElement {
   static get template () {
     return html`
       <style>
+        :host {
+          white-space: normal;
+        }
+
         .main-container {
           display: flex;
           border-width: 2px;
@@ -117,6 +121,7 @@ class CasperNotice extends PolymerElement {
           padding: 8px;
           flex-grow: 1;
           flex-direction: column;
+          align-items: flex-start;
         }
 
         .main-container .content-container .title {
