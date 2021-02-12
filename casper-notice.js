@@ -34,7 +34,6 @@ class CasperNotice extends PolymerElement {
       type: {
         type: String,
         value: 'info',
-        observer: '__typeChanged',
         reflectToAttribute: true
       }
     };
