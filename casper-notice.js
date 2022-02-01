@@ -121,6 +121,7 @@ class CasperNotice extends PolymerElement {
           flex-grow: 1;
           flex-direction: column;
           align-items: flex-start;
+          justify-content: space-evenly;
         }
 
         .main-container .content-container .title {
